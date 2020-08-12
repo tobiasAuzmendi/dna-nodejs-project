@@ -36,7 +36,6 @@ function initEmailTransport() {
 }
 
 const sendEmail = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.body);
   var requestValidation = _getSendEmailValidation(req.body);
 
   if (!requestValidation.passes) {
@@ -473,18 +472,16 @@ const sendEmail = (req: Request, res: Response, next: NextFunction) => {
         </body>
         </html>
       `
-      // html: '<h4>Dear </h4>'
-      // template: // require('../html/account-validation.html')
     };
 
     smtpTransport.sendMail(data, function(err, emailInfo) {
       if (err) {
-        // I would add a LogController function here.
+        // I would call a LogController function here.
         console.log(err);
       }
     });
 
-    return res.status(200);
+    return res.status(200).send('Correo enviado');
   }
 };
 

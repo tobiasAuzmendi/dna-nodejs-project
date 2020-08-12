@@ -478,14 +478,13 @@ const sendEmail = (req: Request, res: Response, next: NextFunction) => {
     };
 
     smtpTransport.sendMail(data, function(err, emailInfo) {
-      console.log('err', err);
-      console.log('emailInfo', emailInfo);
       if (err) {
-        return res.status(500).send(err.message);
-      } else {
-        return res.status(200);
+        // I would add a LogController function here.
+        console.log(err);
       }
     });
+
+    return res.status(200);
   }
 };
 

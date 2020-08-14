@@ -22,7 +22,7 @@ const getMutationStats = async (req: Request, res: Response, next: NextFunction)
 };
 
 const checkSequence = async (req: Request, res: Response, next: NextFunction) => {
-  const dna = JSON.parse(req.body.dna);
+  const dna = req.body.dna;
   const checkSequenceValidation = _getCheckSequenceValidation(dna);
 
   if (!checkSequenceValidation.passes) {

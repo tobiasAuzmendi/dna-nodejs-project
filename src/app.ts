@@ -16,12 +16,6 @@ mongoose.connection.once('open', () => {
 
 // for images remote access (emails)
 app.use(express.static('./'));
-
-app.use(bodyParser.urlencoded({
-  extended: true,
-  limit: '500mb'
-}));
-
 app.use(bodyParser.json({ limit: '500mb' }));
 
 app.use(function(req, res, next) {
